@@ -25,5 +25,5 @@ outputs:
     description: Whether there are updates available.
 
 runs:
-  using: node20
+  using: node24
   main: index.js
