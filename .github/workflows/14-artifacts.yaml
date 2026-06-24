@@ -18,13 +18,13 @@ jobs:
         working-directory: 14-artifacts/react-app
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
       - name: Setup Node
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v6
         with:
           node-version: '24.x'
       - name: Download cached dependencies
-        uses: actions/cache@v3
+        uses: actions/cache@v6
         id: cache
         with:
           path: 14-artifacts/react-app/node_modules
@@ -35,14 +35,14 @@ jobs:
       - name: Unit tests
         run: npm run test -- --coverage
       - name: Upload test results
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.test-coverage-key }}
           path: 14-artifacts/react-app/coverage
       - name: Build code
         run: npm run build
       - name: Upload build files
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: ${{ env.build-artifact-key }}
           path: 14-artifacts/react-app/build
@@ -51,7 +51,7 @@ jobs:
     needs: test-build
     steps:
       - name: Download build artifact
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: ${{ env.build-artifact-key }}
           path: build

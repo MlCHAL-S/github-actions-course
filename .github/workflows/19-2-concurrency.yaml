@@ -13,7 +13,7 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}-${{ github.ref }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Ping URL
         id: ping-url
         uses: ./.github/actions/docker-ping-url
@@ -24,7 +24,7 @@ jobs:
   ping-without-concurrency:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Ping URL
         id: ping-url
         uses: ./.github/actions/docker-ping-url
